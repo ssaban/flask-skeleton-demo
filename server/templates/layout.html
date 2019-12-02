@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for ('static',filename='css/bootstrap/4.0.0/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for ('static',filename='main.css') }}">
+
+    <!-- google charts -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/charts/loader.js') }}"></script>
+
+    <!--Load the AJAX API-->
+    <!-- <script type="text/javascript" src="{{ url_for('static', filename='js/location_of_script.js') }}"></script> -->
+
+    <!--Load Date picker if browser do not support it-   datefield.type!="date"   for now do for all e.g conditin 1 -->
+    <script type="text/javascript">
+    var datefield=document.createElement("input")
+    datefield.setAttribute("type", "date")
+    if (datefield.type!="date"){ //if browser doesn't support input type="date", load files for jQuery UI Date Picker
+        document.write('<link href="{{ url_for('static', filename='css/jqueryui/1.8/themes/base/jquery-ui.css') }}" rel="stylesheet" type="text/css" />\n')
+        document.write('<script src="{{ url_for('static', filename='js/jquery/1.4/jquery.min.js') }}"><\/script>\n')
+        document.write('<script src="{{ url_for('static', filename='js/jquery/1.8/jquery-ui.min.js') }}"><\/script>\n')
+
+
+    }
+    </script>
+
+
+    {%if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>Flask Skeleton App</title>
+    {% endif %}
+    <style>
+
+
+    legend{
+        font-size: 14px;
+    }
+    </style>
+
+</head>
+<body>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+          <a class="navbar-brand mr-4" href="/">Flask Skeleton App</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+              <a class="nav-item nav-link" href="/">Home</a>
+
+                <a class="nav-item nav-link" href="/Setting">Setting</a>
+                <a class="nav-item nav-link" href="/AssessmentPlan">AssessmentPlan</a>
+                <a class="nav-item nav-link" href="/Assessment">Assessment</a>
+                <a class="nav-item nav-link" href="/Aggregate">Aggregate</a>
+
+
+
+
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+                <!--
+              <a class="nav-item nav-link" href="/login">Login</a>
+              <a class="nav-item nav-link" href="/register">Register</a>
+ -->
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main role="main" class="container">
+      <div class="row">
+        <div class="col-md-16">
+          {% block content %}{% endblock %}
+        </div>
+          <!--
+        <div class="col-md-4">
+          <div class="content-section">
+            <h3>Our Sidebar</h3>
+            <p class='text-muted'>You can put any information here you'd like.
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-light">Latest Posts</li>
+                <li class="list-group-item list-group-item-light">Announcements</li>
+                <li class="list-group-item list-group-item-light">Calendars</li>
+                <li class="list-group-item list-group-item-light">etc</li>
+              </ul>
+            </p>
+          </div>
+        </div>
+        -->
+      </div>
+    </main>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery/3.2.1/jquery-3.2.1.slim.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/popper/1.12.9/popper.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap/4.0.0/bootstrap.min.js') }}"></script>
+</body>
+</html>
